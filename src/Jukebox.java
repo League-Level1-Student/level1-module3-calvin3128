@@ -4,6 +4,8 @@
  */
 
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -22,8 +24,16 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
 /* 1. Download the JavaZoom jar from here: http://bit.ly/javazoom
  * 2. Right click your project and add it as an External JAR (Under Java Build Path > Libraries).*/
 
-public class Jukebox implements Runnable {
+public class Jukebox implements Runnable, ActionListener {
 
+	JPanel panel = new JPanel();
+    JFrame frame = new JFrame();
+    JButton but = new JButton();
+    JLabel lab = new JLabel("Play Moo");
+    JButton pau = new JButton();
+    JLabel lap = new JLabel("Pause");
+    Song moo = new Song("moo.wav");
+	
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Jukebox());
 	}
@@ -32,13 +42,24 @@ public class Jukebox implements Runnable {
 
 		// 3. Find an mp3 on your computer or on the Internet.
 		// 4. Create a Song
-        Song moo = new Song("moo.wav");
-		// 5. Play the Song
         moo.play();
-        JFrame frame = new JFrame();
-        JPanel panel = new JPanel();
-        JButton but = new JButton();
-        but.addActionListener();
+        
+		// 5. Play the Song
+        
+        pau.add(lap);
+        panel.add(pau);
+        but.add(lab);
+        panel.add(but);
+        panel.add(pau);
+        frame.add(panel);
+        
+        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+        //panel.setVisible(true);
+        but.addActionListener(this);
+        pau.addActionListener(this);
+        frame.pack();
+        
         
 		/*
 		 * 6. Create a user interface for your Jukebox so that the user can to
@@ -53,6 +74,18 @@ public class Jukebox implements Runnable {
 		URL imageURL = getClass().getResource(fileName);
 		Icon icon = new ImageIcon(imageURL);
 		return new JLabel(icon);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource()==pau) {
+			moo.stop();
+			System.out.println("pause");
+		}else if(e.getSource()==but) {
+			moo.play();
+			System.out.println("play");
+		}
 	}
 
 }
