@@ -5,6 +5,7 @@
 /MagicBox.class
 /MediaPalace.class
 /Movie.class
+/MoviePlayer.class
 /NetflixQueue.class
 /Pencil.class
 /Recipes.html
@@ -17,5 +18,3 @@
 /gridworld.jar
 /magic-box.jpg
 /moo.wav
-/MoviePlayer.class
-/.DS_Store
