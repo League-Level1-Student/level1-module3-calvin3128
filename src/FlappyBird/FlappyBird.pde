@@ -1,3 +1,4 @@
+int score;
 int birdY;
 int yspd = 0;
 int pipeX = 800;
@@ -13,6 +14,7 @@ void draw(){
     if(pipeX<-100){
     pipeX = 800;
     pipeT = (int) random(100,500);
+    score++;
   }
   
   rect(pipeX,pipeT+200,100,600-pipeT);
@@ -25,13 +27,20 @@ void draw(){
   if(keyPressed){
    yspd = -10; 
   }
+  fill(0,0,0);
+  text(score,400,50);
   }
-  if(birdY-25 < pipeT && pipeX > 75 && pipeX < 125){
+  if(birdY-25 < pipeT && pipeX > 15 && pipeX < 125){
     gamestate = 1;
+    fill(255,0,0);
+    text(score,400,50);
   }
-  if(birdY > pipeT + 175 && pipeX > 75 && pipeX < 125){
+  if(birdY > pipeT + 175 && pipeX > 15 && pipeX < 125){
    gamestate = 1; 
+   fill(255,0,0);
+   text(score,400,50);
   }
+  
   //birdX is always 100
   //bird has 25 radius
 }
